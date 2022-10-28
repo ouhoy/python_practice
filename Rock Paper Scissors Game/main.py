@@ -27,20 +27,23 @@ scissors = '''
 '''
 rps_graphs = [rock, scissors ,paper]
 rock_paper_scissors = ["rock", "scissors", "paper"]
+input_state = True
+def play_game(user_input):
+    print(rps_graphs[user_input])
+    user_choice = rock_paper_scissors[user_input]
+    randint = random.randint(0,2)
+    computer_choice = rock_paper_scissors[randint]
+    print(f"Computer Choose: \n{rps_graphs[randint]}")
+    if user_choice == computer_choice:
+        print("It's a draw")
+    elif (user_choice == "rock" and computer_choice == "scissors") or ( user_choice == "scissors" and computer_choice == "paper" ) or ( user_choice == "paper" and computer_choice == "rock" ):
+        print(f"You won!")
+    else:
+        print("You lose!")
 
-user_input = int(input("Type 0 for Rock, 1 for Paper or 2 Scissors "))
-print(rps_graphs[user_input])
-
-user_choice = rock_paper_scissors[user_input]
-randint = random.randint(0,2)
-computer_choice = rock_paper_scissors[randint]
-print(f"Computer Choose: \n{rps_graphs[randint]}")
-
-
-if user_choice == computer_choice:
-    print("It's a draw")
-elif (user_choice == "rock" and computer_choice == "scissors") or ( user_choice == "scissors" and computer_choice == "paper" ) or ( user_choice == "paper" and computer_choice == "rock" ):
-    print(f"You won!")
-else:
-    print("You lose!")
-
+while input_state:
+    user_input = int(input("Type 0 for Rock, 1 for Paper or 2 Scissors "))
+    if  user_input == 0 or user_input == 1 or  user_input == 2:  
+        play_game(user_input)
+        input_state = False
+    
