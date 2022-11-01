@@ -1,4 +1,4 @@
-'''
+
 ### For In Array ###
 
 fruits = ["Apple", "Orange", "Peach"]
@@ -16,7 +16,7 @@ for score in student_scores:
         max_score = score
 
 print(f"The highest score in the class is: {max_score}")
-'''
+
 ### Fizz Buzz Game ###
 
 for number in range(1,100):
