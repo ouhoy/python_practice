@@ -1,66 +1,16 @@
 import random
 
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
+from hangman_words import word_list
+from hangman_art import logo, stages
+stages = stages
+print(logo)
 right_combonation = False
 lives = len(stages)
-word_list = ["raccoon", "banana", "camel", "fish"]
+word_list = word_list
 chosen_word = list(random.choice(word_list))
 display = []
+wrong_gussed_letter = []
+
 for num in range(0, len(chosen_word)):
     display.append("_")
 
@@ -74,8 +24,14 @@ while not right_combonation:
         right_combonation = True
         print("You won!!")
     if gussed_letter not in chosen_word:
-        lives -= 1
-        print(stages[lives])
-        if lives <= 0:
-            right_combonation = True
-            print("You lose!")
+        if gussed_letter in wrong_gussed_letter:
+            print("You have already gussed that letter!")
+        else:    
+            wrong_gussed_letter.append(gussed_letter)
+            lives -= 1
+            print(stages[lives])
+            print(f'The letter "{gussed_letter.upper()}" is not in the word. You lose a life.')
+            if lives <= 0:
+                right_combonation = True
+                print(f"You lost!")
+                print("The word you were looking for was: ", "".join(chosen_word).upper())
