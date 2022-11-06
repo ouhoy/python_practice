@@ -1,19 +1,81 @@
 import random
 
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+right_combonation = False
+lives = len(stages)
 word_list = ["raccoon", "banana", "camel", "fish"]
 chosen_word = list(random.choice(word_list))
-print(chosen_word)
-gussed_letter = input("Guess a letter: ").lower()
+display = []
+for num in range(0, len(chosen_word)):
+    display.append("_")
 
-# for letter in chosen_word:
-#     if gussed_letter == letter:
-#         print(True)
-#         chosen_word.remove(gussed_letter)
-#         print(chosen_word)
-#         break
-#     else:
-#         print(False)    
-
-if gussed_letter in chosen_word:
-    chosen_word.remove(gussed_letter)
-print("".join(chosen_word))        
+while not right_combonation:
+    gussed_letter = input("Guess a letter: ").lower()
+    for i in range(0, len(chosen_word)):
+        if gussed_letter == chosen_word[i]:
+            display[i] = chosen_word[i]
+    print("Getting close: ","".join(display))
+    if "_" not in display:
+        right_combonation = True
+        print("You won!!")
+    if gussed_letter not in chosen_word:
+        lives -= 1
+        print(stages[lives])
+        if lives <= 0:
+            right_combonation = True
+            print("You lose!")
