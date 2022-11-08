@@ -3,26 +3,14 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").strip()
 text = input("Type your message:\n").lower().strip()
 shift = int(input("Type the shift number:\n"))
-encrypted = []
-decrypted = []
+final_text = []
 
-def encryption(_text, _shift):
+def ceasar(_text, _shift, operator):
+  
+    if operator == "decode":
+        _shift *= -1
     for letter in _text:
         shift_number = alphabet.index(letter) + _shift
-        encrypted.append(alphabet[shift_number])
-        
-    print("The encoded text is: ","".join(encrypted))
-    
-def decryption(_text, _shift):
-    for letter in _text:
-        shift_number = alphabet.index(letter) - _shift
-        decrypted.append(alphabet[shift_number])
-    print("The decoded text is: ","".join(decrypted))    
-
-
-if direction == "encode":
-    print("encoding...")
-    encryption(text, shift)
-if direction == "decode":
-    print("decoding...")
-    decryption(text, shift)   
+        final_text.append(alphabet[shift_number])
+    print(f"Your {operator}d text is : ","".join(final_text)) 
+ceasar(text, shift, direction)
