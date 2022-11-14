@@ -10,7 +10,6 @@ guessed_number = int(input("Guess a number from 1 to 100 ").strip())
 for i in range(1, 101):
     numbers.append(i)
 answer = random.choice(numbers)
-
 def play_game(mode, guessed_num):
     if mode == 0: 
         print(f"You lost, the right number was {answer}.")
