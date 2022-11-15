@@ -29,7 +29,7 @@ while not has_lost:
     cls()
     print(logo)
     if score > 0: print(f"You are right! Current score: {score}")
-    if account_a == account_b:
+    while account_a == account_b:
        account_b: random_account(data)
     print("Compare A: ",get_data(account_a))
     print(vs, f"\n Against B: {get_data(account_b)}")
