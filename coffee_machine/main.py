@@ -31,35 +31,24 @@ resources = {
     "money": 0
 }
 is_working = True
-
-
-def check_resources(drink):
-    water = MENU[drink]["ingredients"]["water"]
-    coffee = MENU[drink]["ingredients"]["coffee"]
-    if "milk" in MENU[drink]["ingredients"]: 
-        milk = MENU[drink]["ingredients"]["milk"]
-        if milk > resources["milk"]:
-            print(f"Sorry there is not enough milk")
+def check_resources(order_ingredient):
+    for item in order_ingredient:
+        if order_ingredient[item] >= resources[item]:
+            print(f"Sorry there is not enough {item}")
             return False
-
-    if water > resources["water"]:
-        print(f"Sorry there is not enough water")
-        return False
-    if coffee > resources["coffee"]:
-        print(f"Sorry there is not enough coffee")
-        return False
-    return True 
-
+    return True
+def process_coins():
+        '''Calc and retun total inserted coins'''
+        quaters = float(input("How many quaters?: ")) * 0.25
+        dimes = float(input("How many dimes?: ")) * 0.10
+        nickles = float(input("How many nickles?: ")) * 0.05
+        pennies = float(input("How many pennies?: ")) * 0.01
+        inserted_coins = quaters + dimes + nickles + pennies
+        return inserted_coins
 def change_resources(drink):
-    drink_cost = MENU[drink]["cost"]
-    water = MENU[drink]["ingredients"]["water"]
-    coffee = MENU[drink]["ingredients"]["coffee"]
-    if "milk" in MENU[drink]["ingredients"]: 
-        milk = MENU[drink]["ingredients"]["milk"]
-        resources["milk"] -= milk 
-    resources["water"] -=  water
-    resources["coffee"] -=  coffee
-    resources["money"] +=  drink_cost
+    for item in drink["ingredients"]:
+        resources[item] -= drink["ingredients"][item]
+    resources["money"] += drink["cost"]    
 
 while is_working:
     drink_type = input("What would you like? (espresso/latte/cappuccino): ").lower().strip()
@@ -79,19 +68,17 @@ while is_working:
     if not (drink_type == "espresso" or  drink_type == "latte" or drink_type == "cappuccino"):
         print("Please make sure you put a valid drink...")  
         continue
-    if check_resources(drink_type):
-        quaters = float(input("How many quaters?: ")) * 0.25
-        dimes = float(input("How many dimes?: ")) * 0.10
-        nickles = float(input("How many nickles?: ")) * 0.05
-        pennies = float(input("How many pennies?: ")) * 0.01
-        inserted_coins = quaters + dimes + nickles + pennies
-        drink_cost = MENU[drink_type]["cost"]
-    if drink_cost > inserted_coins:
-        inserted_coins = 0
+    drink = MENU[drink_type]
+    if check_resources(drink["ingredients"]):
+        coins = process_coins()
+
+        drink_cost = drink["cost"]
+    else: continue    
+    if drink_cost > coins:
         print("Sorry that's not enough money. Money refunded.")
-    elif drink_cost < inserted_coins:
-        change = inserted_coins - drink_cost
-        change_resources(drink_type)
+    elif drink_cost < coins:
+        change = coins - drink_cost
+        change_resources(drink)
         print(f"“Here is ${round(change, 2)} dollars in change.")
         print(f"Here is your {drink_type}. Enjoy!")
     else:
