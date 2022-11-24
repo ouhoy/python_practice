@@ -30,8 +30,12 @@ def triangle():
         tim.forward(100)
 
 
-triangle()
-square()
-for num in range(5, 9):
-    pentagon(num)
+def draw_shape(sides_num):
+    deg = 360 / sides_num
+    for _ in range(sides_num):
+        tim.forward(100)
+        tim.right(deg)
 
+
+for number_of_sides in range(3, 11):
+    draw_shape(number_of_sides)
