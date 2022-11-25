@@ -1,6 +1,8 @@
+import random
 from turtle import Turtle
 
 tim = Turtle()
+colors = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
 
 
 def dashed_line():
@@ -18,7 +20,7 @@ def square():
 
 
 def pentagon(sides):
-    deg = 360/sides
+    deg = 360 / sides
     for _ in range(sides):
         tim.right(deg)
         tim.forward(100)
@@ -37,5 +39,23 @@ def draw_shape(sides_num):
         tim.right(deg)
 
 
-for number_of_sides in range(3, 11):
-    draw_shape(number_of_sides)
+"""for number_of_sides in range(3, 11):
+    draw_shape(number_of_sides)"""
+
+
+def tim_directions(des, deg):
+    directions_list = ["forward", "back", "right", "left"]
+    random_direction = random.choice(directions_list)
+    if random_direction == "forward":
+        tim.forward(des)
+    elif random_direction == "back":
+        tim.back(des)
+    elif random_direction == "right":
+        tim.right(deg)
+    elif random_direction == "left":
+        tim.left(deg)
+
+
+for _ in range(0, 300):
+    tim.color(random.choice(colors))
+    tim_directions(des=50, deg=90)
