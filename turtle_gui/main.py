@@ -3,6 +3,7 @@ from turtle import Turtle
 
 tim = Turtle()
 colors = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+directions = [0, 90, 180, 270]
 
 
 def dashed_line():
@@ -42,8 +43,8 @@ def draw_shape(sides_num):
 """for number_of_sides in range(3, 11):
     draw_shape(number_of_sides)"""
 
-
-def tim_directions(des, deg):
+# deprecated code
+"""def tim_directions(des, deg):
     directions_list = ["forward", "back", "right", "left"]
     random_direction = random.choice(directions_list)
     if random_direction == "forward":
@@ -56,6 +57,19 @@ def tim_directions(des, deg):
         tim.left(deg)
 
 
-for _ in range(0, 300):
+for _ in range(0, 50):
     tim.color(random.choice(colors))
-    tim_directions(des=50, deg=90)
+    tim_directions(des=50, deg=120)
+"""
+
+
+def random_walk(steps):
+    tim.pensize(15)
+    tim.speed("fastest")
+    for _ in range(steps):
+        tim.color(random.choice(colors))
+        tim.forward(30)
+        tim.setheading(random.choice(directions))
+
+
+random_walk(200)
