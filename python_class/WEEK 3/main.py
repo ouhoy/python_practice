@@ -1,4 +1,4 @@
-import os 
+import os
 
 # hello_world = 1
 # print("hello_world")
@@ -30,7 +30,7 @@ is_valid = True
 while is_valid:
     try:
         working_hours = float(input("How many working hours? ").strip())
-        worker_rate = float(input("Enter the rate: ").strip()) 
+        worker_rate = float(input("Enter the rate: ").strip())
         if working_hours > 40:
             over_working_hours = working_hours - 40
             over_hours_rate = worker_rate * 1.5
@@ -41,4 +41,4 @@ while is_valid:
             print(f"Your payment is going to be ${pay}")
         is_valid = False
     except:
-        print("Please put a valid number")    
+        print("Please put a valid number")

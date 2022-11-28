@@ -2,8 +2,25 @@ import random
 from turtle import Turtle
 
 tim = Turtle()
+tim.screen.colormode(255)
 colors = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
 directions = [0, 90, 180, 270]
+
+
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return r, g, b
+
+
+def random_walk(steps):
+    tim.pensize(15)
+    tim.speed("fastest")
+    for _ in range(steps):
+        tim.color(random_color())
+        tim.forward(30)
+        tim.setheading(random.choice(directions))
 
 
 def dashed_line():
@@ -42,34 +59,4 @@ def draw_shape(sides_num):
 
 """for number_of_sides in range(3, 11):
     draw_shape(number_of_sides)"""
-
-# deprecated code
-"""def tim_directions(des, deg):
-    directions_list = ["forward", "back", "right", "left"]
-    random_direction = random.choice(directions_list)
-    if random_direction == "forward":
-        tim.forward(des)
-    elif random_direction == "back":
-        tim.back(des)
-    elif random_direction == "right":
-        tim.right(deg)
-    elif random_direction == "left":
-        tim.left(deg)
-
-
-for _ in range(0, 50):
-    tim.color(random.choice(colors))
-    tim_directions(des=50, deg=120)
-"""
-
-
-def random_walk(steps):
-    tim.pensize(15)
-    tim.speed("fastest")
-    for _ in range(steps):
-        tim.color(random.choice(colors))
-        tim.forward(30)
-        tim.setheading(random.choice(directions))
-
-
-random_walk(200)
+random_walk(500)
