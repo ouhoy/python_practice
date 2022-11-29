@@ -1,8 +1,12 @@
-def thing():
-    print("hello")
-    print("world")
+# def thing():
+#     print("hello")
+#     print("world")
+#
+#
+# thing()
+# print("Zip")
+# thing()
 
 
-thing()
-print("Zip")
-thing()
+big = min("Hello world")
+print(big)
