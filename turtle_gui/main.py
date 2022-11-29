@@ -1,8 +1,10 @@
 import random
+import turtle
 from turtle import Turtle
 
 tim = Turtle()
-tim.screen.colormode(255)
+screen = turtle.Screen()
+screen.colormode(255)
 colors = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
 directions = [0, 90, 180, 270]
 
@@ -59,4 +61,16 @@ def draw_shape(sides_num):
 
 """for number_of_sides in range(3, 11):
     draw_shape(number_of_sides)"""
-random_walk(500)
+
+tim.speed("fastest")
+
+
+def draw_spirograph(gap_size):
+    for _ in range(int(360 / gap_size)):
+        tim.color(random_color())
+        tim.setheading(tim.heading() + gap_size)
+        tim.circle(100)
+
+
+draw_spirograph(1)
+screen.exitonclick()
