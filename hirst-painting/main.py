@@ -10,8 +10,14 @@ color_list = [(238, 242, 247), (247, 241, 244), (243, 247, 245), (133, 168, 205)
               (26, 61, 114), (12, 90, 66), (173, 189, 218), (64, 108, 88), (112, 126, 160), (57, 51, 47),
               (213, 94, 100), (3, 88, 119), (148, 202, 232), (173, 201, 190)]
 
+tim.hideturtle()
+tim.penup()
+tim.speed("fastest")
+tim.setheading(225)
+tim.forward(250)
+tim.setheading(0)
+
 for i in range(200):
-    tim.penup()
     if i != 0 and i % 20 == 0:
         tim.right(-90)
         tim.forward(40)
@@ -20,10 +26,8 @@ for i in range(200):
     if i % 2 == 0:
         random_color = random.choice(color_list)
         tim.dot(20, random_color)
-        tim.color(random_color)
     else:
         tim.penup()
     tim.forward(20)
-
 
 screen.exitonclick()
