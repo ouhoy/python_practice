@@ -23,3 +23,5 @@ for i in range(len(num_list)):
     if num_list[i] < smallest_num:
         smallest_num = num_list[i]
 print(f"The smallest number in the second method is {smallest_num}")
+
+
