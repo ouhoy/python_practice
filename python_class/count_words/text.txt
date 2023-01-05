@@ -1,0 +1,4 @@
+What is the Design Phase in SDLC?
+The Design Phase is an essential phase of the Software Development Life Cycle. The list of requirements that you develop in the definition phase is used to make design choices. In the design phase, one or more designs are created to achieve the project result. Depending on the project subject, the design phase products include dioramas, flow-charts, sketches, site trees, HTML screen designs, photo impressions, prototypes, and UML schemas.
+
+The project supervisors use these designs to choose the definitive design that you can produce in the project. The development phase follows it. Once you have selected the design in the definition phase, you cannot make changes in the project’s later stage.
