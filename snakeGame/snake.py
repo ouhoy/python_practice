@@ -52,3 +52,7 @@ class Snake:
             self.segments[segment_num].goto(new_x, new_y)
 
         self.head.forward(MOVE_DISTANCE)
+
+    def collision_with_wall(self):
+        if self.head.xcor() > 280 or self.head.xcor() < -280 or self.head.ycor() > 280 or self.head.ycor() < -280:
+            return True
