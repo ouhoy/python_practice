@@ -1,12 +1,14 @@
 from turtle import Turtle
+from typing import Literal
 
 
 class Paddle(Turtle):
     STEPS = 20
     SCREEN_EDGE = 240
 
-    def __init__(self):
+    def __init__(self, position: tuple):
         super().__init__()
+        self.position = position
         self.create_pong()
 
     def create_pong(self):
@@ -14,8 +16,7 @@ class Paddle(Turtle):
         self.color("white")
         self.penup()
         self.shapesize(stretch_wid=5, stretch_len=1)
-
-        self.goto(x=350, y=0)
+        self.goto(self.position)
 
     def up(self):
         if self.ycor() == self.SCREEN_EDGE:
