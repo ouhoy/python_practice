@@ -1,5 +1,4 @@
 from turtle import Turtle
-from typing import Literal
 
 
 class Paddle(Turtle):
