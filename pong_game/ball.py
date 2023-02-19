@@ -8,6 +8,7 @@ class Ball(Turtle):
         self.create_ball()
         self.x_move = 10
         self.y_move = 10
+        self.move_speed = 0.1
 
     def create_ball(self):
         self.shape("circle")
