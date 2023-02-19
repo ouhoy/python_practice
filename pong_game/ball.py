@@ -10,7 +10,7 @@ class Ball(Turtle):
         self.y_move = 10
 
     def create_ball(self):
-        self.shape("square")
+        self.shape("circle")
         self.color("white")
         self.penup()
 
@@ -25,3 +25,7 @@ class Ball(Turtle):
         new_ycor = self.ycor() + self.y_move
 
         self.goto(x=new_xcor, y=new_ycor)
+
+    def reset_position(self):
+        self.goto(0, 0)
+        self.bounce_x()
