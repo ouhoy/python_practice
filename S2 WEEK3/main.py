@@ -1,15 +1,5 @@
-class Person:
-    def __init__(self, firstname: str, lastname: str):
-        self.__firstname = firstname
-        self.__lastname = lastname
-
-    def get_fullname(self):
-        return {"firstname": self.__firstname, "lastname": self.__lastname}
-
-    def set_fullname(self, firstname, lastname):
-        self.__firstname = firstname
-        self.__lastname = lastname
-        return {"firstname": self.__firstname, "lastname": self.__lastname}
+from person import Person
+from program import Program
 
 
 class Student(Person):
@@ -21,15 +11,7 @@ class Student(Person):
 class Lecturer(Person):
     def __init__(self, firstname: str, lastname: str, list_of_courses_lectured: list):
         super().__init__(firstname, lastname)
-        self.firstname = firstname
-        self.lastname = lastname
         self.list_of_courses_lectured = list_of_courses_lectured
-
-
-class Program:
-    def __init__(self, name: str, list_of_courses: list):
-        self.name = name
-        self.list_of_courses = list_of_courses
 
 
 class Course:
@@ -37,13 +19,25 @@ class Course:
         self.__title = title
         self.__hv = hv
         self.__description = description
+        # self.lecturer = lecturer
 
     def get_title(self):
         return self.__title
 
 
 student_one = Student("Abdallah", "Dahmou", 23)
-course_one = Course("Developing Quality Software and Systems", 30, "Building high-quality software systems.")
-lecturer_one = Lecturer("Younes", "El Amr-ani", ["Developing Quality Software", "Introduction to Programming"])
+student_two = Student("Rania", "Samih", 22)
 
-print(student_one.get_fullname())
+course_one = Course("Developing Quality Software and Systems", 30, "Building high-quality software systems.")
+course_two = Course("Web development", 25, "Building web applications with NodeJS and ReactJS.")
+
+lecturer_one = Lecturer("Younes", "El Amr-ani", [course_one])
+
+SE = Program("Software Engineering", [course_one, course_two], [student_one])
+BA = Program("Business Management", [course_one], [student_two])
+
+for num, student in enumerate(SE.get_students()):
+    first_name = student.get_fullname()["firstname"]
+    last_name = student.get_fullname()["lastname"]
+
+    print(f"{num + 1} - {first_name} {last_name}")
