@@ -18,12 +18,13 @@ class CarManager(Turtle):
     def create_car(self):
         self.shape("square")
         self.color(random.choice(COLORS))
-        self.right(-90)
+        self.setheading(90)
         self.penup()
         self.shapesize(WIDTH / STAMP_SIZE, HEIGHT / STAMP_SIZE)
-        self.goto(START_LINE_X, random.randint(-240, 240))
+        random_y_cord = random.randint(-240, 240)
+        self.goto(START_LINE_X, random_y_cord)
 
-    def move(self):
+    def move_car(self):
         x_cord = self.xcor() - MOVE_INCREMENT
         if x_cord == -START_LINE_X:
             self.color("white")

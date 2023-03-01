@@ -1,3 +1,4 @@
+import random
 import time
 from turtle import Screen
 from player import Player
@@ -11,17 +12,17 @@ screen.tracer(0)
 player = Player()
 
 screen.listen()
-screen.onkeypress(player.move, "Up")
+screen.onkeypress(player.go_up, "Up")
 
-loop_counter = 0
 car_list = []
+
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
 
-    loop_counter += 1
-    if loop_counter % 6 == 0:
+    random_chance = random.randint(1, 6)
+    if random_chance == 1:
         car_list.append(CarManager())
-        for car in car_list:
-            car.move()
+    for car in car_list:
+        car.move_car()
