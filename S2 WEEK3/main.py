@@ -5,9 +5,9 @@ from course import Course
 
 
 class Student(Person):
-    def __init__(self, firstname: str, lastname: str, age: int):
+    def __init__(self, firstname: str, lastname: str, grade: int):
         super().__init__(firstname, lastname)
-        self.__age = age
+        self.__grade = grade
 
 
 student_one = Student("Abdallah", "Dahmou", 23)
