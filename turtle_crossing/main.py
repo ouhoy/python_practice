@@ -10,6 +10,7 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 
 player = Player()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkeypress(player.go_up, "Up")
@@ -31,9 +32,11 @@ while game_is_on:
         # Detect collision with car
         if car.distance(player) < 20:
             game_is_on = False
+            scoreboard.game_over()
 
         # Detect successful crossing
         if player.is_at_finish_line():
             car.level_up()
+            scoreboard.increase_level()
 
 screen.exitonclick()

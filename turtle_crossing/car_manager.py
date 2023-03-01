@@ -28,7 +28,7 @@ class CarManager(Turtle):
     def move_car(self):
         x_cord = self.xcor() - STARTING_MOVE_DISTANCE
         if x_cord == -START_LINE_X:
-            self.color("white")
+            self.hideturtle()
             return
         self.goto(x_cord, self.ycor())
 
