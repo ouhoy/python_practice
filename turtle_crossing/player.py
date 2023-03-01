@@ -16,7 +16,8 @@ class Player(Turtle):
     def go_up(self):
         self.forward(MOVE_DISTANCE)
 
-        # When the turtle hits the top edge of the screen
-        y_position = self.ycor()
-        if y_position > FINISH_LINE_Y:
+    # When the turtle hits the top edge of the screen
+    def is_at_finish_line(self):
+        if self.ycor() > FINISH_LINE_Y:
             self.goto(STARTING_POSITION)
+            return True

@@ -3,7 +3,7 @@ import random
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
-MOVE_INCREMENT = 10
+MOVE_INCREMENT = 2
 STAMP_SIZE = 20
 HEIGHT = 20
 WIDTH = 40
@@ -13,6 +13,7 @@ START_LINE_X = 310
 class CarManager(Turtle):
     def __init__(self):
         super().__init__()
+        self.car_speed = STARTING_MOVE_DISTANCE
         self.create_car()
 
     def create_car(self):
@@ -25,8 +26,11 @@ class CarManager(Turtle):
         self.goto(START_LINE_X, random_y_cord)
 
     def move_car(self):
-        x_cord = self.xcor() - MOVE_INCREMENT
+        x_cord = self.xcor() - STARTING_MOVE_DISTANCE
         if x_cord == -START_LINE_X:
             self.color("white")
             return
         self.goto(x_cord, self.ycor())
+
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
