@@ -18,5 +18,5 @@ class Player(Turtle):
 
         # When the turtle hits the top edge of the screen
         y_position = self.ycor()
-        if y_position > 280:
+        if y_position > FINISH_LINE_Y:
             self.goto(STARTING_POSITION)
