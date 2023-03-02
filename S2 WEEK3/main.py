@@ -26,4 +26,5 @@ def enrolled_students(program):
 
         print(f"{num + 1} - {first_name} {last_name}")
 
-# enrolled_students(SE.get_students())
+
+enrolled_students(SE.get_students())
