@@ -16,3 +16,6 @@ class Lecturer(Person):
             return self.__lectured_courses.remove(course)
         else:
             print(f"The course {course.get_title()} is not lectured by Mr/Ms {self.__firstname} {self.__lastname}")
+
+    def display(self):
+        return {"firstname": self.__firstname, "lastname": self.__lastname, "lectured_courses": self.__lectured_courses}

@@ -8,3 +8,6 @@ class Course:
 
     def get_title(self):
         return self.__title
+
+    def display(self):
+        return {"title": self.__title, "hv": self.__hv, "description": self.__description}

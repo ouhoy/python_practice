@@ -18,3 +18,6 @@ class Program:
 
     def add_course(self, new_course):
         self.courses_list.append(new_course)
+
+    def display(self):
+        return {"name": self.__name, "courses": self.__courses, "students": self.__students}

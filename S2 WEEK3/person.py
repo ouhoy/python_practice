@@ -10,3 +10,6 @@ class Person:
         self.__firstname = firstname.capitalize()
         self.__lastname = lastname.capitalize()
         return {"firstname": self.__firstname, "lastname": self.__lastname}
+
+    def display(self):
+        return {"firstname": self.__firstname, "lastname": self.__lastname}
